@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline>
+  <info>
+    <name>filename</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
+    <pipeline_version/>
+    <pipeline_type>Normal</pipeline_type>
+    <parameters>
+    </parameters>
+    <capture_transform_performance>N</capture_transform_performance>
+    <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
+    <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
+    <created_user>-</created_user>
+    <created_date>2025/02/07 21:28:19.563</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2025/02/07 21:28:19.563</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+  </order>
+  <transform>
+    <name>criação das tabelas staging</name>
+    <type>ExecSql</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <arguments>
+</arguments>
+    <connection>synthea-data</connection>
+    <delete_field/>
+    <execute_each_row>N</execute_each_row>
+    <insert_field/>
+    <quoteString>N</quoteString>
+    <read_field/>
+    <replace_variables>N</replace_variables>
+    <set_params>N</set_params>
+    <single_statement>N</single_statement>
+    <sql>CREATE TABLE if not exists staging.patients (
+    "Id" varchar(300) NOT NULL,
+    "BIRTHDATE" varchar(300) NULL,
+    "DEATHDATE" varchar(300) NULL,
+    "SSN" varchar(300) NULL,
+    "DRIVERS" varchar(300) NULL,
+    "PASSPORT" varchar(300) NULL,
+    "PREFIX" varchar(300) NULL,
+    "FIRST" varchar(300) NULL,
+    "LAST" varchar(300) NULL,
+    "SUFFIX" varchar(300) NULL,
+    "MAIDEN" varchar(300) NULL,
+    "MARITAL" varchar(300) NULL,
+    "RACE" varchar(300) NULL,
+    "ETHNICITY" varchar(300) NULL,
+    "GENDER" varchar(300) NULL,
+    "BIRTHPLACE" varchar(300) NULL,
+    "ADDRESS" varchar(300) NULL,
+    "CITY" varchar(300) NULL,
+    "STATE" varchar(300) NULL,
+    "COUNTY" varchar(300) NULL,
+    "ZIP" varchar(300) NULL,
+    "LAT" float4 NULL,
+    "LON" float4 NULL,
+    "HEALTHCARE_EXPENSES" float4 NULL,
+    "HEALTHCARE_COVERAGE" float4 NULL
+);
+
+CREATE TABLE if not exists staging.claims (
+	"Id" varchar(300) NOT NULL,
+	"PATIENTID" varchar(300) NULL,
+	"PROVIDERID" varchar(300) NULL,
+	"PRIMARYPATIENTINSURANCEID" varchar(300) NULL,
+	"SECONDARYPATIENTINSURANCEID" varchar(300) NULL,
+	"DEPARTMENTID" varchar(300) NULL,
+	"PATIENTDEPARTMENTID" varchar(300) NULL,
+	"DIAGNOSIS1" varchar(300) NULL,
+	"DIAGNOSIS2" varchar(300) NULL,
+	"DIAGNOSIS3" varchar(300) NULL,
+	"DIAGNOSIS4" varchar(300) NULL,
+	"DIAGNOSIS5" varchar(300) NULL,
+	"DIAGNOSIS6" varchar(300) NULL,
+	"DIAGNOSIS7" varchar(300) NULL,
+	"DIAGNOSIS8" varchar(300) NULL,
+	"REFERRINGPROVIDERID" varchar(300) NULL,
+	"APPOINTMENTID" varchar(300) NULL,
+	"CURRENTILLNESSDATE" varchar(300) NULL,
+	"SERVICEDATE" varchar(300) NULL,
+	"SUPERVISINGPROVIDERID" varchar(300) NULL,
+	"STATUS1" varchar(300) NULL,
+	"STATUS2" varchar(300) NULL,
+	"STATUSP" varchar(300) NULL,
+	"OUTSTANDING1" varchar(300) NULL,
+	"OUTSTANDING2" varchar(300) NULL,
+	"OUTSTANDINGP" varchar(300) NULL,
+	"LASTBILLEDDATE1" varchar(300) NULL,
+	"LASTBILLEDDATE2" varchar(300) NULL,
+	"LASTBILLEDDATEP" varchar(300) NULL,
+	"HEALTHCARECLAIMTYPEID1" varchar(300) NULL,
+	"HEALTHCARECLAIMTYPEID2" varchar(300) NULL
+);
+
+CREATE TABLE if not exists staging.medications (
+	"START" varchar(300) NULL,
+	"STOP" varchar(300) NULL,
+	"PATIENT" varchar(300) NULL,
+	"PAYER" varchar(300) NULL,
+	"ENCOUNTER" varchar(300) NULL,
+	"CODE" varchar(300) NULL,
+	"DESCRIPTION" varchar(300) NULL,
+	"BASE_COST" float4 NULL,
+	"PAYER_COVERAGE" float4 NULL,
+	"DISPENSES" varchar(300) NULL,
+	"TOTALCOST" float4 NULL,
+	"REASONCODE" varchar(300) NULL,
+	"REASONDESCRIPTION" varchar(300) NULL
+);
+
+CREATE TABLE if not exists staging.encounters (
+	"Id" varchar(300) NULL,
+	"START" varchar(300) NULL,
+	"STOP" varchar(300) NULL,
+	"PATIENT" varchar(300) NULL,
+	"ORGANIZATION" varchar(300) NULL,
+	"PROVIDER" varchar(300) NULL,
+	"PAYER" varchar(300) NULL,
+	"ENCOUNTERCLASS" varchar(300) NULL,
+	"CODE" varchar(300) NULL,
+	"DESCRIPTION" varchar(300) NULL,
+	"BASE_ENCOUNTER_COST" float4 NULL,
+	"TOTAL_CLAIM_COST" float4 NULL,
+	"PAYER_COVERAGE" float4 NULL,
+	"REASONCODE" varchar(300) NULL,
+	"REASONDESCRIPTION" varchar(300) NULL
+);
+
+CREATE TABLE if not exists staging.procedures (
+	"START" varchar(300) NULL,
+	"STOP" varchar(300) NULL,
+	"PATIENT" varchar(300) NULL,
+	"ENCOUNTER" varchar(300) NULL,
+	"CODE" varchar(300) NULL,
+	"DESCRIPTION" varchar(300) NULL,
+	"BASE_COST" float4 NULL,
+	"REASONCODE" varchar(300) NULL,
+	"REASONDESCRIPTION" varchar(300) NULL
+);
+
+
+
+
+
+
+
+</sql>
+    <update_field/>
+    <attributes/>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>128</yloc>
+    </GUI>
+  </transform>
+  <transform_error_handling>
+    <error>
+      <source_transform>criação das tabelas staging</source_transform>
+      <target_transform/>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename/>
+      <descriptions_valuename/>
+      <fields_valuename/>
+      <codes_valuename/>
+      <max_errors/>
+      <max_pct_errors/>
+      <min_pct_rows/>
+    </error>
+  </transform_error_handling>
+  <attributes/>
+</pipeline>
