@@ -40,8 +40,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>C:\Users\hop\OneDrive\Área de Trabalho\ai_agents\project-synthea-create-staging-tables.hwf</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
