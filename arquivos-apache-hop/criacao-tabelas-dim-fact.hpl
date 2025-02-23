@@ -20,77 +20,7 @@
   <notepads>
   </notepads>
   <order>
-    <hop>
-      <from>Table input</from>
-      <to>Add constants</to>
-      <enabled>Y</enabled>
-    </hop>
   </order>
-  <transform>
-    <name>Add constants</name>
-    <type>Constant</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <currency/>
-        <decimal/>
-        <format>0000000000000</format>
-        <group/>
-        <length>-1</length>
-        <name>current_year</name>
-        <nullif>2025</nullif>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <type>Integer</type>
-      </field>
-    </fields>
-    <attributes/>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>160</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>Table input</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>synthea-data</connection>
-    <execute_each_row>N</execute_each_row>
-    <limit>0</limit>
-    <sql>SELECT
-  "Id",
-FLOOR(EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM "BIRTHDATE"::DATE)) AGE
-, "GENDER"
-, "RACE"
-, "ETHNICITY"
-, "ZIP"
-, "MARITAL"
-, "DEATHDATE"
-, "HEALTHCARE_EXPENSES"
-, "HEALTHCARE_COVERAGE"
-FROM "staging"."patients"
-</sql>
-    <variables_active>N</variables_active>
-    <attributes/>
-    <GUI>
-      <xloc>400</xloc>
-      <yloc>160</yloc>
-    </GUI>
-  </transform>
   <transform_error_handling>
   </transform_error_handling>
   <attributes/>
